@@ -6,7 +6,7 @@ const FBAuth = require('./util/FBAuth');
 
 // firebase.initializeApp(firebaseConfig);
 
-const { getAllScreams, postOneScream, getScream, commentOnScream, likeScream, unlikeScream } = require('./handlers/screams');
+const { getAllScreams, postOneScream, getScream, commentOnScream, likeScream, unlikeScream, deleteScream } = require('./handlers/screams');
 const { signup, login, uploadImage, addUserDetails, getAuthenticatedUser } = require('./handlers/users');
 
 
@@ -14,7 +14,7 @@ const { signup, login, uploadImage, addUserDetails, getAuthenticatedUser } = req
 app.get('/screams', getAllScreams);
 app.post('/scream', FBAuth, postOneScream);
 app.get('/scream/:screamId', getScream);
-//delete scream
+app.delete('/scream/:screamId/like', FBAuth, deleteScream);
 app.get('/scream/:screamId/like', FBAuth, likeScream);
 app.get('/scream/:screamId/unlike', FBAuth, unlikeScream);
 app.post('/scream/:screamId/comment', FBAuth, commentOnScream);
